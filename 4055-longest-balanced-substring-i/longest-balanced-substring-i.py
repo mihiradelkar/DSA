@@ -27,7 +27,7 @@ class Solution:
         # Best:
         for left in range(n):
             if n-left <= res:
-                return res
+                break
             freq = defaultdict(int)
             unique = 0
             max_freq = 0
