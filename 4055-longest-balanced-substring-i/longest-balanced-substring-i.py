@@ -28,7 +28,7 @@ class Solution:
         for left in range(n):
             if n-left <= res:
                 return res
-            freq = Counter()
+            freq = defaultdict(int)
             unique = 0
             max_freq = 0
             for right in range(left,n):
