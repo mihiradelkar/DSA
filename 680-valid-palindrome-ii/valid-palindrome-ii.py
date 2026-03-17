@@ -23,7 +23,12 @@ class Solution:
         right = len(s)-1
         while left<right:
             if s[left]!=s[right]:
-                return (isPalindrome(left,right-1) or isPalindrome(left+1,right))
+                # skip left and rigth and check with rev
+                skipL = s[left+1:right+1]       # skip left by left+1
+                skipR = s[left:right]           # skip right by just sending right
+                return (skipL==skipL[::-1] or skipR==skipR[::-1]) # check with rev
+                # alternate apprach
+                # return (isPalindrome(left,right-1) or isPalindrome(left+1,right))
             left+=1
             right-=1
         return True
