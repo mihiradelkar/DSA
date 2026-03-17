@@ -16,10 +16,7 @@ class Solution:
         #     max_window = max(max_window,right-left+1)
         # return max_window
 
-        left = 0
-        right = 0
-        zeros = 0
-        count = 0
+        left = right = zeros = count = 0
         while right<len(nums):
             if nums[right] == 0:
                 zeros+=1
