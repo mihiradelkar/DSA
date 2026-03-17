@@ -5,8 +5,10 @@ class Solution:
     # step 4: merge both BS with flag for switching -> # if leftbias: right = mid-1, else: left = mid+1
     
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        def binary_search(left: int, right:intt, leftbias:bool) -> int:
+        def binary_search(nums: List[int], target: int, leftbias:bool) -> int:
         # def searchLeft(nums: List[int], target: int) -> int:
+            left = 0
+            right = len(nums) -1
             idx = -1
             while left<=right:
                 mid = (left + right)//2
@@ -36,5 +38,4 @@ class Solution:
         #             right = mid-1
         #     return idx
         # return [searchLeft(nums,target), searchRight(nums,target)]
-        n = len(nums)-1
-        return [binary_search(0,n,True), binary_search(0,n,False)]
+        return [binary_search(nums,target,True), binary_search(nums,target,False)]
