@@ -15,8 +15,8 @@ class Solution:
         intervals.sort(key = lambda i:i[0])         # sort by start so that the overlap are adjacent 
         res = []                                    # add the first with smallest start interval
         for start, end in intervals:                # iterate over all next intervals
-            if res and start <= res[-1][1]:         # Start <= End of Last interval in res. ie there's a overlap
-                res[-1][1] = max(res[-1][1],end)    # check max interval ending time
-            else:
+            if not res or start > res[-1][1]:       # Start > End of Last interval in res. ie there's a overlap
                 res.append([start,end])             # append if no overlap
+            else:
+                res[-1][1] = max(res[-1][1],end)    # check max interval ending time
         return res
