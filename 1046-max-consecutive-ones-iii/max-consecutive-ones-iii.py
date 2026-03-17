@@ -6,8 +6,8 @@ class Solution:
         # [1,1,1,0,0,0,1,1,1,1,0]
         #            l
         #                      r
-        for right in range(len(nums)):
-            if nums[right]==0:
+        for right, num in enumerate(nums):
+            if num==0:
                 zeros+=1
             while zeros>k:
                 if nums[left]==0:
