@@ -1,7 +1,7 @@
-class TrieNode:
-    def __init__(self):
-        self.children = {}
-        self.isEnd = False
+# class TrieNode:
+#     def __init__(self):
+#         self.children = {}
+#         self.isEnd = False
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         # without trie
