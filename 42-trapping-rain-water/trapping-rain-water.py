@@ -1,20 +1,23 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        maxleft=maxright=0
-        left=0
-        right=len(height)-1
+        left, right = 0, len(height) - 1   # two pointers start at ends
+        left_max, right_max = 0, 0          # running max from each side
         water = 0
-        while left<right:
-            if height[left]<height[right]:
-                if height[left]>maxleft:
-                    maxleft=height[left]
+
+        while left < right:
+            if height[left] <= height[right]:
+                # left side is the bottleneck — resolve left bar
+                if height[left] >= left_max:
+                    left_max = height[left]     # update left max, no water here
                 else:
-                    water+=maxleft-height[left]
-                left+=1
+                    water += left_max - height[left]  # trapped by left_max ceiling
+                left += 1
             else:
-                if height[right]>maxright:
-                    maxright=height[right]
+                # right side is the bottleneck — resolve right bar
+                if height[right] >= right_max:
+                    right_max = height[right]   # update right max, no water here
                 else:
-                    water+=maxright-height[right]
-                right-=1
+                    water += right_max - height[right]  # trapped by right_max ceiling
+                right -= 1
+
         return water
