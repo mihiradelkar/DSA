@@ -7,9 +7,10 @@ class Solution:
         for num in seen:
             if num-1 not in seen:
                 count = 1
-                while num+1 in seen:
+                cur = num
+                while cur+1 in seen:
                     count+=1
-                    num+=1
+                    cur+=1
                 max_count = max(max_count,count)
         return max_count
 
