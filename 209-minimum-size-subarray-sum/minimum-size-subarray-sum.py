@@ -4,11 +4,10 @@ class Solution:
         right = 0
         total = 0
         res = float("inf") 
-        while right<len(nums):
+        for right in range(len(nums)):
             total += nums[right]
             while total>=target:
                 res = min(res, right-left+1)
                 total-=nums[left]
                 left+=1
-            right+=1
         return res if res!=float("inf") else 0
