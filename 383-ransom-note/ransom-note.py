@@ -3,7 +3,7 @@ class Solution:
         count_m = Counter(magazine)
 
         for ch in ransomNote:
-            if ch in count_m and count_m[ch]>0:
+            if ch in count_m and count_m[ch]!=0:
                 count_m[ch]-=1
             else:
                 return False
