@@ -5,9 +5,9 @@ class Solution:
         for num in nums:
             if num == 1:
                 count+=1
-                max_ones = max(max_ones,count)
             else:
+                max_ones = max(max_ones,count)
                 count=0
-        # return max(max_ones,count)
-        return max_ones
+        # return max_ones
+        return max(max_ones,count)
         
