@@ -16,3 +16,26 @@ class Solution:
                 if nums[i]<nums[j]:
                     longest[i] = max(longest[i],1+longest[j])
         return max(longest)
+
+        # [10,9,2,5,3,7,101,18]
+        # [10][9][2][2,5][2,3][2,3,7][2,3,7,101][2,3,7,18]
+
+        tails = []
+        def binary_search_lower(target):
+            start = 0
+            end = len(tails)
+            while start<end:
+                mid = (start+end)//2
+                if tails[mid]<target:
+                    start = mid+1
+                else:
+                    end = mid
+            return start
+
+        for num in nums:
+            pos =  binary_search_lower(num)
+            if pos<len(tails):
+                tails[pos] = min(tails[pos],num)
+            else:
+                tails.append(num)
+        return len(tails)
