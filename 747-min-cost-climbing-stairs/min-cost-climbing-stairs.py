@@ -12,8 +12,9 @@ class Solution:
         # prev =    0    0    0   10
         # curr =    0    0   10   15
         # dp[i]=    0    0   10   15
-        
+
         prev = curr = 0
-        for i in range(2,len(cost)+1):
+        n = len(cost)+1
+        for i in range(2,n):
             curr, prev = min((curr+cost[i-1]),(prev+cost[i-2])), curr
         return curr
