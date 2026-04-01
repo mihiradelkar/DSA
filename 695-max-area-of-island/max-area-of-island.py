@@ -5,19 +5,17 @@ class Solution:
 
         def bfs(row,col):
             area = 0
+            grid[row][col]=0
             queue = deque([(row,col)])
             directions = [(0,1),(1,0),(-1,0),(0,-1)]
             while queue:
                 r, c = queue.popleft()
-                # print(r,c)
-                if grid[r][c]==0:
-                    continue
-                grid[r][c]=0
                 area+=1
                 for dr, dc in directions:
                     nr = r+dr
                     nc = c+dc
                     if 0<=nr<m and 0<=nc<n and grid[nr][nc]==1:
+                        grid[nr][nc]=0
                         queue.append((nr,nc))
             return area
         max_area = 0
