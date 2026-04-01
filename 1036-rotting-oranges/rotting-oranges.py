@@ -3,26 +3,26 @@ class Solution:
         m = len(grid)
         n = len(grid[0])
         queue = deque()
-        time = 0
+        fresh = 0
         for i in range(m):
             for j in range(n):
                 if grid[i][j]==2:
-                    queue.append((i,j,0))
+                    queue.append((i,j))
+                elif grid[i][j]==1:
+                    fresh+=1
 
-        while queue:
+        time = 0
+        while queue and fresh>0:            # IMPORTANT: fresh>0: early terminate all friuts are rotten also in queue
             rotten = len(queue)
             directions = [(0,1),(1,0),(-1,0),(0,-1)]
             for i in range(rotten):
-                r,c,t= queue.popleft()
-                time = max(time,t)
+                r,c = queue.popleft()
                 for dr,dc in directions:
                     nr,nc = dr+r, dc+c
                     if 0<=nr<m and 0<=nc<n and grid[nr][nc]==1:
                         grid[nr][nc]=2
-                        queue.append((nr,nc,t+1))
+                        fresh-=1
+                        queue.append((nr,nc))
+            time+=1
 
-        for i in range(m):
-            for j in range(n):
-                if grid[i][j]==1:
-                    return -1
-        return time
+        return time if fresh == 0 else -1
