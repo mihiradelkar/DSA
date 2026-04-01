@@ -1,7 +1,6 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
-        m = len(grid)
-        n = len(grid[0])
+        m, n = len(grid), len(grid[0])
         queue = deque()
         fresh = 0
         for i in range(m):
@@ -13,11 +12,9 @@ class Solution:
 
         time = 0
         while queue and fresh>0:            # IMPORTANT: fresh>0: early terminate all friuts are rotten also in queue
-            rotten = len(queue)
-            directions = [(0,1),(1,0),(-1,0),(0,-1)]
-            for i in range(rotten):
+            for i in range(len(queue)):
                 r,c = queue.popleft()
-                for dr,dc in directions:
+                for dr,dc in  [(0,1),(1,0),(-1,0),(0,-1)]:
                     nr,nc = dr+r, dc+c
                     if 0<=nr<m and 0<=nc<n and grid[nr][nc]==1:
                         grid[nr][nc]=2
