@@ -6,6 +6,7 @@ class Solution:
         while len(heap)>1:
             stone1 = heapq.heappop(heap)
             stone2 = heapq.heappop(heap)
-            heapq.heappush(heap,stone1-stone2)
-        return -heap[0]
+            if stone1 != stone2:
+                heapq.heappush(heap,stone1-stone2)
+        return -heap[0] if heap else 0
 
