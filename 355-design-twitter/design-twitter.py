@@ -10,6 +10,7 @@ class Twitter:
         self.time+=1
 
     def getNewsFeed(self, userId: int) -> List[int]:
+        # Merge K sorted List
         heap = []
         users = self.followers[userId] | {userId}
         for uid in users:
@@ -26,8 +27,7 @@ class Twitter:
             if idx>=0:
                 time, nextTweetId = self.tweets[uid][idx]
                 heapq.heappush(heap,(-time,nextTweetId,uid,idx-1))
-        return res 
-        
+        return res     
 
     def follow(self, followerId: int, followeeId: int) -> None:
         self.followers[followerId].add(followeeId)
