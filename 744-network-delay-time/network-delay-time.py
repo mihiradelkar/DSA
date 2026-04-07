@@ -13,7 +13,7 @@ class Solution:
             if node in times: #alreadt reached means time will always be less
                 continue
             times[node] = time
-            max_t = time
+            # max_t = time
             # add all the adjecnt nodes
             for new_node,new_time in graph[node]:
                 if new_node not in times: # push the neighbor if not visited
@@ -22,5 +22,5 @@ class Solution:
         if len(times)<n:
             return -1
         # max time taken to reach end
-        return max_t
-        # return max(time.values())
+        # return max_t
+        return max(times.values())
