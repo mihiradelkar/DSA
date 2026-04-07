@@ -6,7 +6,7 @@ class Solution:
 
         heap = [(0,k)]
         times = {}
-        max_t = 0
+        # max_t = 0
         while heap:
             # pop neareast node in the heap
             time, node = heapq.heappop(heap)
