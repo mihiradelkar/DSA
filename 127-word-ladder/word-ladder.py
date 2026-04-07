@@ -7,7 +7,7 @@ class Solution:
             for i in range(len(word)):
                 pattern = word[:i]+"*"+word[i+1:]
                 word_map[pattern].append(word)
-        print(word_map)
+        # print(word_map)
         queue = deque([(beginWord,1)])
         visited = {beginWord}
         jumps = 0
@@ -19,6 +19,6 @@ class Solution:
                 pattern = word[:i]+"*"+word[i+1:]
                 for neighbor in word_map[pattern]:
                     if neighbor not in visited:
-                        queue.append((neighbor,jump+1))
                         visited.add(neighbor)
+                        queue.append((neighbor,jump+1))
         return 0        
