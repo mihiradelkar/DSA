@@ -8,8 +8,9 @@ class Solution:
         for i in range(len(gas)):
             net = gas[i]-cost[i]
             tank += net
+            # total += net
             # print(tank,start)
             if tank<0:
                 start = i+1
                 tank = 0
-        return start
+        return start # if total >=0 else -1
