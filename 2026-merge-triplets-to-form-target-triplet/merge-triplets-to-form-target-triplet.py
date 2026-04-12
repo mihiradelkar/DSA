@@ -29,10 +29,20 @@ class Solution:
         #  [1,8,4],
         #  [1,7,5]], 
         
+        # merged = [0,0,0]
+        # x,y,z = target
+        # for a,b,c in triplets:
+        #     if a>x or b>y or c>z:
+        #         continue
+        #     merged = [max(a, merged[0]), max(b, merged[1]), max(c, merged[2])]
+        # return merged == target
+        
         merged = [0,0,0]
         x,y,z = target
         for a,b,c in triplets:
             if a>x or b>y or c>z:
                 continue
             merged = [max(a, merged[0]), max(b, merged[1]), max(c, merged[2])]
-        return merged == target
+            if merged == target:
+                return True
+        return False
