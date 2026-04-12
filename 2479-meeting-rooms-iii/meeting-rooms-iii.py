@@ -13,19 +13,19 @@ class Solution:
             if available:
                 room = heapq.heappop(available)
                 heapq.heappush(used,(end,room))
+                count[room] +=1
             # if meeting are not available
             else:
                 last_end,room = heapq.heappop(used)
                 heapq.heappush(used,(last_end+(end-start),room))
-            count[room] +=1
+                count[room] +=1
 
         # print(count)
-        return count.index(max(count))
+        # return count.index(max(count))
         # # Faster
-        # max_count = 0 
-        # room = 0
-        # for i in range(n):
-        #     if count[i]>max_count:
-        #         max_count = count[i]
-        #         room = i
-        # return room
+        max_count = room = 0
+        for i in range(n):
+            if count[i]>max_count:
+                max_count = count[i]
+                room = i
+        return room
