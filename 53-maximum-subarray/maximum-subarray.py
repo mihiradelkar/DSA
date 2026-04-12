@@ -5,6 +5,11 @@ class Solution:
         max_sum = nums[0]
         cur_sum = 0
         for num in nums:
-            cur_sum = max(num,num+cur_sum)
-            max_sum = max(max_sum,cur_sum)
+            # cur_sum = max(num,num+cur_sum)
+            # max_sum = max(max_sum,cur_sum)
+            cur_sum += num
+            if cur_sum>max_sum:
+                max_sum = cur_sum
+            if cur_sum < 0:
+                cur_sum = 0
         return max_sum
