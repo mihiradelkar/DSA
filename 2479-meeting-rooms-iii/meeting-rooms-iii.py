@@ -9,15 +9,22 @@ class Solution:
             while used and start>=used[0][0]:
                 _,room = heapq.heappop(used)
                 heapq.heappush(available,room)
-            # if meeting are not available
-            if not available:
-                low_end,room = heapq.heappop(used)
-                end = low_end+(end-start)
-                heapq.heappush(available,room)
             # if meeeting rooms are available
-            room = heapq.heappop(available)
-            heapq.heappush(used,(end,room))
+            if available:
+                room = heapq.heappop(available)
+                heapq.heappush(used,(end,room))
+            # if meeting are not available
+            else:
+                last_end,room = heapq.heappop(used)
+                heapq.heappush(used,(last_end+(end-start),room))
             count[room] +=1
 
         # print(count)
-        return count.index(max(count))
+        # return count.index(max(count))
+        # Faster
+        max_count = room = 0
+        for i in range(n):
+            if count[i]>max_count:
+                max_count = count[i]
+                room = i
+        return room
