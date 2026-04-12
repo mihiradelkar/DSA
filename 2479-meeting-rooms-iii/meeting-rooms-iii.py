@@ -1,7 +1,7 @@
 class Solution:
     def mostBooked(self, n: int, meetings: List[List[int]]) -> int:
         meetings.sort()                                             # IMPORTANT
-        available = [i for i in range(n)]                   # sorted room no need to heapify
+        available = list(range(n)) #[i for i in range(n)]                   # sorted room no need to heapify
         used = []  #(end,room)
         count = [0] * n 
         for start, end in meetings:
