@@ -1,6 +1,7 @@
 class Solution:
     def minimumDistance(self, word: str) -> int:
         w = [ord(c)-ord("A") for c in word]
+        n = len(w)
         def dist(a,b):
             if a == 26:
                 return 0
@@ -9,7 +10,7 @@ class Solution:
             return abs(r1-r2)+abs(c1-c2)
         # @cache
         # def dfs(i,other):
-        #     if i == len(w):
+        #     if i == n):
         #         return 0
         #     curr = w[i]
         #     prev = w[i-1]
@@ -17,7 +18,8 @@ class Solution:
         #     move_other= dist(other,curr) + dfs(i+1,prev)
         #     return min(move_curr,move_other)
         # return dfs(1,26)
-        # n = len(w)
+        
+        # TABULAR
         # dp = [[0]*27 for i in range(n+1)]
         # for i in range(n-1,0,-1):
         #     curr = w[i]
@@ -30,7 +32,7 @@ class Solution:
         # print(dp)
         # return dp[1][26]
 
-        n = len(w)
+        # space-optimized rolling two rows
         # dp[i] only ever reads from dp[i+1] — it never touches dp[i+2] or earlier
         nxt = [0] * 27   # dp[i+1]
         cur = [0] * 27   # dp[i]
