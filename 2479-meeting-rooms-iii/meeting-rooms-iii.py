@@ -22,7 +22,8 @@ class Solution:
         # print(count)
         # return count.index(max(count))
         # Faster
-        max_count = room = 0
+        max_count = 0 
+        room = 0
         for i in range(n):
             if count[i]>max_count:
                 max_count = count[i]
