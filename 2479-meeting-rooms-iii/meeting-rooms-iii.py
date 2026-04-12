@@ -20,12 +20,12 @@ class Solution:
             count[room] +=1
 
         # print(count)
-        # return count.index(max(count))
-        # Faster
-        max_count = 0 
-        room = 0
-        for i in range(n):
-            if count[i]>max_count:
-                max_count = count[i]
-                room = i
-        return room
+        return count.index(max(count))
+        # # Faster
+        # max_count = 0 
+        # room = 0
+        # for i in range(n):
+        #     if count[i]>max_count:
+        #         max_count = count[i]
+        #         room = i
+        # return room
