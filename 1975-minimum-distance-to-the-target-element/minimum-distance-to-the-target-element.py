@@ -4,4 +4,4 @@ class Solution:
         for i in range(len(nums)):
             if nums[i]==target:
                 res = min(res,abs(i-start))
-        return res if res != float("inf") else 0
+        return res
