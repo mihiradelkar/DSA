@@ -11,10 +11,7 @@ class Solution:
         if target == words[startIndex]:
             return 0
         while i<=(n//2):
-            right = (startIndex + i) % n
-            left = (startIndex - i) % n
-            # print(left,right)
-            if target == words[left] or target == words[right]:
+            if target == words[(startIndex - i) % n] or target == words[(startIndex + i) % n]:
                 return i
             i+=1
         return -1
