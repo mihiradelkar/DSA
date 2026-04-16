@@ -1,5 +1,6 @@
 class Solution:
     def solveQueries(self, nums: List[int], queries: List[int]) -> List[int]:
+        # O(n*q)
         # n = len(nums)
 
         # def findDist(i):
@@ -18,6 +19,9 @@ class Solution:
         # for i in queries:
         #     res.append(findDist(i))
         # return res
+
+        # 
+        # O( (n+q) logn)
         index_map = defaultdict(list)
         for index, num in enumerate(nums):
             index_map[num].append(index)
