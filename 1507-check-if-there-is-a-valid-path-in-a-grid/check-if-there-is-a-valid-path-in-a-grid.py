@@ -14,24 +14,30 @@ class Solution:
         m = len(grid)
         n = len(grid[0])
         queue = deque([(0,0)])
-        visited = set([(0,0)])
+        visited = {(0,0)}
         
         while queue:
             r,c = queue.popleft()
             if r==m-1 and c ==n-1:
                 return True
-            st = grid[r][c]
             # check what cells can we go
-            for dr,dc in direction_map[st]:
+            for dr,dc in direction_map[grid[r][c]]:
                 nr,nc = r+dr, c+dc
-                if 0<=nr<m and 0<=nc<n and (nr,nc) not in visited:
-                    # print(nr,nc)
-                    # check if connected
-                    for rdr, rdc in direction_map[grid[nr][nc]]:
-                        rnr,rnc = nr+rdr, nc+rdc
-                        # print(rnr,rnc)
-                        if r == rnr and c==rnc:
-                            queue.append((nr,nc))
-                            visited.add((nr,nc))
-                            break
+                # if 0<=nr<m and 0<=nc<n and (nr,nc) not in visited:
+                #     # print(nr,nc)
+                #     # check if connected
+                #     # for rdr, rdc in direction_map[grid[nr][nc]]:
+                #     #     rnr,rnc = nr+rdr, nc+rdc
+                #     #     # print(rnr,rnc)
+                #     #     if r == rnr and c==rnc:
+                #     #         queue.append((nr,nc))
+                #     #         visited.add((nr,nc))
+                #     #         break
+                #     if (-dr,-dc) in direction_map[grid[nr][nc]]:
+                #         queue.append((nr,nc))
+                #         visited.add((nr,nc))
+                if 0<=nr<m and 0<=nc<n and (nr,nc) not in visited and (-dr,-dc) in direction_map[grid[nr][nc]]:
+                        visited.add((nr,nc))
+                        queue.append((nr,nc))
+                    
         return False
