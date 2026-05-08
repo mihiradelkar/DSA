@@ -88,4 +88,4 @@ class Solution:
                         dist[j] = d+1
                         queue.append(j)
                 edges[p].clear()
-        return dist[n-1]
+        # return dist[n-1]
