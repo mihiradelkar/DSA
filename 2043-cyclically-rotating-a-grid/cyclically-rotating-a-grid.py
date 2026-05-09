@@ -12,10 +12,9 @@ class Solution:
         # print(layers)
         # return grid
 
-        m = len(grid)
-        n = len(grid[0])
+        m, n = len(grid), len(grid[0])
         for layer in range(min(m,n)//2):
-            r1,c1 = layer, layer
+            r1 = c1 = layer
             r2,c2 = m-1-layer,n-1-layer
             # make ring
             ring = []
@@ -31,11 +30,10 @@ class Solution:
             ring = ring[shift:] + ring[:shift] 
             # put in grid
             idx = 0
-            for c in range(c1,c2):      grid[r1][c] = ring[idx]; idx+=1
-            for r in range(r1,r2):      grid[r][c2] = ring[idx]; idx+=1
-            for c in range(c2,c1,-1):   grid[r2][c] = ring[idx]; idx+=1
-            for r in range(r2,r1,-1):   grid[r][c1] = ring[idx]; idx+=1
-        return grid
+            for c in range(c1,c2): grid[r1][c] = ring[idx]; idx+=1
+            for r in range(r1,r2): grid[r][c2] = ring[idx]; idx+=1
+            for c in range(c2,c1,-1): grid[r2][c] = ring[idx]; idx+=1
+            for r in range(r2,r1,-1): grid[r][c1] = ring[idx]; idx+=1
 
-        # m+n-1+m-1+n-2
+        return grid
     
