@@ -17,18 +17,19 @@ class Solution:
         for layer in range(min(m,n)//2):
             r1,c1 = layer, layer
             r2,c2 = m-1-layer,n-1-layer
+            # make ring
             ring = []
             for c in range(c1,c2): ring.append(grid[r1][c])
             for r in range(r1,r2): ring.append(grid[r][c2])
             for c in range(c2,c1,-1): ring.append(grid[r2][c])
             for r in range(r2,r1,-1): ring.append(grid[r][c1])
+            # shift
             l = len(ring)
             shift = k % l
-            # print(ring)
-            # print(shift)
+            if shift == 0:
+                continue
             ring = ring[shift:] + ring[:shift] 
-            # print(ring)
-
+            # put in grid
             idx = 0
             for c in range(c1,c2):      grid[r1][c] = ring[idx]; idx+=1
             for r in range(r1,r2):      grid[r][c2] = ring[idx]; idx+=1
