@@ -1,35 +1,5 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        tails = []
-        for num in nums:
-            pos = bisect_left(tails,num)
-            if len(tails)==pos:
-                tails.append(num)
-            # if tails[pos]>num:
-            else:
-                tails[pos]=num
-        return len(tails)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
