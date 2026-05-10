@@ -14,9 +14,11 @@ class Solution:
         n = len(nums) 
         jumps=[-1]*n
         jumps[0]=0
-        for j in range(1,n):
-            for i in range(j):
-                if abs(nums[j] - nums[i]) <= target and jumps[i] != -1:
+        for i in range(n):
+            if jumps[i] == -1:
+                continue
+            for j in range(i+1,n):
+                if abs(nums[j] - nums[i]) <= target:
                     jumps[j] = max(jumps[j],jumps[i]+1)
         return jumps[n-1]
 
