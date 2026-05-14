@@ -4,7 +4,9 @@ class Solution:
         n = len(nums)
         if n < 2:
             return False
+        if nums[-1]!=nums[-2] and nums[-1]!=n-1:
+            return False
         for i in range(n-1):
             if nums[i] != i+1:
                 return False
-        return True if nums[-1]==nums[-2] and nums[-1]==n-1 else False
+        return True
