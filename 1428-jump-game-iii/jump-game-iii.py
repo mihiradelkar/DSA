@@ -27,14 +27,22 @@ class Solution:
 
         n = len(arr)
         queue = deque([start])
-        visited = {start}
+        # visited = {start}
+        visited = [False] * n
         while queue:
             i = queue.popleft()
             if 0 == arr[i]:
                 return True
-            for j in [i+arr[i], i-arr[i]]:
-                if 0<=j<n and j not in visited:
-                    queue.append(j)
-                    visited.add(j)
+            # for j in [i+arr[i], i-arr[i]]:
+            #     if 0<=j<n and j not in visited:
+            #         queue.append(j)
+            #         visited.add(j)
+            left, right = i-arr[i], i+arr[i]
+            if right < n and not visited[right]:
+                queue.append(right)
+                visited[right]=True
+            if left >= 0 and not visited[left]:
+                queue.append(left)
+                visited[left]=True
         return False
         
