@@ -4,7 +4,8 @@ class Solution:
             # print("early")
             return -1
         i=j=0
-        while i<len(nums1) and j<len(nums2):
+        n,m = len(nums1),len(nums2)
+        while i<n and j<m:
             if nums1[i]==nums2[j]:
                 return nums1[i]
             elif nums1[i]>nums2[j]:
