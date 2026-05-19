@@ -6,7 +6,7 @@ class Solution:
             # print("early")
             return -1
         while i<n and j<m:
-            print(i,n,j,m)
+            # print(i,n,j,m)
             if nums1[i]==nums2[j]:
                 return nums1[i]
             elif nums1[i]>nums2[j]:
