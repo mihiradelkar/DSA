@@ -16,18 +16,16 @@ class Solution:
         #     C[i]+= C[i-1]
         # return C
 
-        n = len(A)
-        mapp = defaultdict(int)
+        # 
+        seen = set()
         C = []
         common = 0
-        for i in range(n):
-            mapp[A[i]]+=1
-            if mapp[A[i]] == 2:
-                common+=1
-            
-            mapp[B[i]]+=1
-            if mapp[B[i]] == 2:
-                common+=1
-            
+        for i in range(len(A)):
+            if A[i] in seen:
+                common +=1
+            else: seen.add(A[i])
+            if B[i] in seen:
+                common +=1
+            else: seen.add(B[i])
             C.append(common)
         return C
