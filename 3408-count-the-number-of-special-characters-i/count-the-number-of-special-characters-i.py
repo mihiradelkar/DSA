@@ -1,9 +1,13 @@
 class Solution:
     def numberOfSpecialChars(self, word: str) -> int:
-        clean = set(word)
+        seen = set(word)
         count = 0
-        for ch in clean:
-            if chr(ord(ch)-32) in clean:
+        # for ch in seen:
+        #     if chr(ord(ch)-32) in seen:
+        #         count+=1
+
+        for ch in "abcdefghijklmnopqrstuvwxyz":
+            if ch in seen and ch.upper() in seen:
                 count+=1
         return count
 
