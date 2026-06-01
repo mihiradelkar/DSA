@@ -1,10 +1,11 @@
 class Solution:
     def minimumCost(self, cost: List[int]) -> int:
         total = 0
-        cost.sort(key=lambda x:-x)
+        cost.sort(reverse=True)
         # print(cost)
-        for i in range(len(cost)):
-            if i%3!=2:
-                total+=cost[i]
+        for i, c in enumerate(cost):
+            if i%3==2:
+                continue
+            total+=cost[i]
         return total
         
