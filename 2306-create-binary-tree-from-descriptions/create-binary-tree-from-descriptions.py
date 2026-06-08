@@ -8,7 +8,6 @@ class Solution:
     def createBinaryTree(self, descriptions: List[List[int]]) -> Optional[TreeNode]:
         node = {}
         childrens = set()
-        
         for parent, child, isLeft in descriptions:
             if parent not in node:
                 node[parent] = TreeNode(parent)
@@ -19,7 +18,6 @@ class Solution:
                 node[parent].left = node[child]
             else:
                 node[parent].right = node[child]
-        
-        for parent, _, _ in descriptions:
-            if parent not in childrens:
-                return node[parent]
+        for k in node.keys():
+            if k not in childrens:
+                return node[k]
